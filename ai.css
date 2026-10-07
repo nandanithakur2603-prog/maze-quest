@@ -1,0 +1,214 @@
+/* ============================================================
+   Trail Quest — Teach Robo (AI) page only
+   Shared tokens, header, panel, buttons, banner live in shared.css
+   ============================================================ */
+
+.ai-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 18px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .ai-layout { grid-template-columns: 1fr; }
+}
+
+/* ---------- Mode buttons ---------- */
+.mode-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.mode-btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 2px solid var(--panel-raised);
+  background: var(--panel);
+  color: var(--parchment);
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.12s ease;
+}
+
+.mode-btn:hover { transform: translateY(-1px); }
+
+.mode-btn.sweet.armed { border-color: var(--gold); background: #3a3320; }
+.mode-btn.sour.armed { border-color: var(--sky); background: #1f333a; }
+.mode-btn.test.armed { border-color: var(--parchment); background: var(--panel-raised); }
+
+/* ---------- Plot ---------- */
+.plot-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.plot-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #10201B;
+  cursor: crosshair;
+  border: 1px solid var(--panel-raised);
+}
+
+#plot-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.plot-point {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-left: -15px;
+  margin-top: -15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.8);
+  z-index: 4;
+  pointer-events: none;
+  animation: pop-in 0.18s ease;
+}
+
+.plot-point.sweet { background: rgba(232, 184, 74, 0.9); }
+.plot-point.sour { background: rgba(95, 184, 217, 0.9); }
+
+.plot-point.test-marker {
+  border: 2px dashed var(--parchment);
+  background: rgba(243, 236, 216, 0.15);
+  font-size: 1.3rem;
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.3); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.nn-line {
+  position: absolute;
+  z-index: 3;
+  height: 2px;
+  background: var(--parchment);
+  opacity: 0.55;
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+
+/* Axis labels */
+.axis-label {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--parchment-dim);
+}
+
+.axis-label.x-axis {
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.axis-label.y-axis {
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
+}
+
+.axis-end {
+  position: absolute;
+  font-size: 0.72rem;
+  color: var(--parchment-dim);
+}
+
+/* ---------- Side panel: quiz + stats ---------- */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 6px 0 14px;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--gold);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
+}
+
+.quiz-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.quiz-item {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--panel-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.quiz-item .quiz-result {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-size: 0.85rem;
+}
+
+.quiz-item.correct { background: #2E4A2A; }
+.quiz-item.incorrect { background: #4a2a26; }
+
+.legend-row {
+  display: flex;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
+  margin-top: 10px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.legend-dot.sweet { background: var(--gold); }
+.legend-dot.sour { background: var(--sky); }
+
+.explain-box {
+  margin-top: 12px;
+  min-height: 44px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--parchment);
+}

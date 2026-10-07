@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trail Quest — Coding Maze</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="app-header">
+      <h1>🧭 Trail Quest</h1>
+      <p>Drag blocks to guide the explorer through the maze.</p>
+    </header>
+
+    <nav class="module-nav">
+      <a href="index.html" class="current">🧩 Coding Maze</a>
+      <a href="ai.html">🤖 Teach Robo (AI)</a>
+    </nav>
+
+    <!-- Level picker, styled as stepping stones on a trail -->
+    <div class="trail" id="trail"></div>
+
+    <p class="level-note" id="level-note"></p>
+
+    <div class="workspace-row">
+
+      <!-- Blockly block workspace -->
+      <div class="panel">
+        <p class="panel-label">🧩 Your Blocks</p>
+        <div id="blockly-div"></div>
+      </div>
+
+      <!-- Maze + controls -->
+      <div class="panel maze-wrap">
+        <p class="panel-label" style="align-self:flex-start;">🗺️ The Trail</p>
+        <div id="maze-grid"></div>
+        <div class="controls">
+          <button class="btn btn-run" id="btn-run">▶ Run</button>
+          <button class="btn btn-reset" id="btn-reset">⟲ Reset</button>
+        </div>
+        <div class="banner idle" id="banner">Build your steps, then press Run.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Blockly core, loaded locally so the game works with no internet -->
+  <script src="lib/blockly_compressed.js"></script>
+  <script src="lib/blocks_compressed.js"></script>
+  <script src="lib/javascript_compressed.js"></script>
+  <script src="lib/msg_en.js"></script>
+
+  <script src="levels.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

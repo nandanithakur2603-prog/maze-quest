@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teach Robo — Trail Quest AI</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="ai.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="app-header">
+      <h1>🤖 Teach Robo</h1>
+      <p>Show Robo examples so it can learn to guess Sweet or Sour on its own.</p>
+    </header>
+
+    <nav class="module-nav">
+      <a href="index.html">🧩 Coding Maze</a>
+      <a href="ai.html" class="current">🤖 Teach Robo (AI)</a>
+    </nav>
+
+    <p class="callout" style="margin: 18px 0 22px;">
+      Robo doesn't know anything about fruit yet. Click a mode below, then click
+      on the map to place a fruit. When you test a new fruit, Robo looks at the
+      closest example it has already learned from, and copies that answer.
+      The more good examples you give it, the smarter it gets!
+    </p>
+
+    <div class="ai-layout">
+
+      <!-- Left: the training plot -->
+      <div class="panel">
+        <p class="panel-label">🗺️ Fruit Map</p>
+
+        <div class="mode-row">
+          <button class="mode-btn sweet" id="mode-sweet">🍭 Add Sweet Example</button>
+          <button class="mode-btn sour" id="mode-sour">🍋 Add Sour Example</button>
+          <button class="mode-btn test" id="mode-test">🧪 Test a New Fruit</button>
+          <button class="btn btn-reset" id="btn-reset">⟲ Reset Robo</button>
+        </div>
+
+        <div class="plot-wrap">
+          <div class="plot-frame" id="plot-frame">
+            <canvas id="plot-canvas" width="480" height="480"></canvas>
+            <!-- points and lines get added here by JS -->
+          </div>
+          <span class="axis-label x-axis">Size: small → big</span>
+          <span class="axis-label y-axis">Sourness ↔ Sweetness</span>
+          <span class="axis-end" style="left:6px; top:6px;">sweet</span>
+          <span class="axis-end" style="left:6px; bottom:6px;">sour</span>
+        </div>
+
+        <div class="legend-row">
+          <span><span class="legend-dot sweet"></span>Sweet example</span>
+          <span><span class="legend-dot sour"></span>Sour example</span>
+        </div>
+
+        <p class="explain-box" id="explain-box"></p>
+      </div>
+
+      <!-- Right: stats + quiz -->
+      <div class="panel">
+        <p class="panel-label">📊 Robo's Report Card</p>
+
+        <div class="stat-row">
+          <div>
+            <div class="stat-number" id="stat-examples">0</div>
+            <div class="stat-label">examples taught</div>
+          </div>
+          <div>
+            <div class="stat-number" id="stat-accuracy">—</div>
+            <div class="stat-label">quiz accuracy</div>
+          </div>
+        </div>
+
+        <p class="panel-label" style="margin-top:18px;">🧪 Mystery Fruit Quiz</p>
+        <p class="level-note" style="color:var(--parchment-dim); font-size:0.85rem; margin: 0 0 8px;">
+          These fruits are hidden from the map. Quiz Robo any time to see how well it's learned.
+        </p>
+        <div class="quiz-strip" id="quiz-strip"></div>
+        <div class="controls" style="margin-top: 10px;">
+          <button class="btn btn-primary" id="btn-quiz">🧪 Quiz Robo's Brain</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="ai.js"></script>
+</body>
+</html>

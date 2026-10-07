@@ -1,0 +1,182 @@
+/* ============================================================
+   Trail Quest — shared tokens & common components
+   Used by both index.html (coding maze) and ai.html (Teach Robo)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Color */
+  --bg-deep:      #16241F;   /* deep pine background */
+  --panel:        #1F3A32;   /* panel surface */
+  --panel-raised: #274539;   /* slightly lighter panel */
+  --gold:         #E8B84A;   /* path / treasure accent */
+  --sky:          #5FB8D9;   /* character / water accent */
+  --success:      #7CC576;   /* goal reached / correct */
+  --danger:       #E8664F;   /* wall bump / incorrect */
+  --parchment:    #F3ECD8;   /* primary text on dark */
+  --parchment-dim:#C9C2AC;
+
+  /* Type */
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(232,184,74,0.06), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(95,184,217,0.05), transparent 40%);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 24px 48px;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.app-header h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.1rem;
+  letter-spacing: 0.3px;
+  color: var(--gold);
+  margin: 0;
+}
+
+.app-header p {
+  margin: 0;
+  color: var(--parchment-dim);
+  font-size: 0.98rem;
+}
+
+/* ---------- Module nav (switch between the two class activities) ---------- */
+.module-nav {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0 4px;
+}
+
+.module-nav a {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  color: var(--parchment-dim);
+  background: var(--panel);
+  border: 1px solid var(--panel-raised);
+  border-radius: 999px;
+  padding: 7px 16px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.module-nav a.current {
+  color: var(--bg-deep);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.module-nav a:hover:not(.current) {
+  border-color: var(--sky);
+  color: var(--parchment);
+}
+
+/* ---------- Panel ---------- */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-raised);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.panel-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--parchment-dim);
+  margin: 0 0 10px 2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 18px;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-run,
+.btn-primary {
+  background: var(--gold);
+  color: #2A2210;
+}
+
+.btn-reset,
+.btn-secondary {
+  background: var(--panel-raised);
+  color: var(--parchment);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) { filter: brightness(1.08); }
+
+.btn.armed {
+  outline: 3px solid var(--parchment);
+  outline-offset: 2px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Feedback banner ---------- */
+.banner {
+  min-height: 28px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 2px 4px;
+}
+
+.banner.win { color: var(--success); }
+.banner.bump { color: var(--danger); }
+.banner.idle { color: var(--parchment-dim); font-weight: 500; font-family: var(--font-body); }
+
+/* ---------- Explainer callouts ---------- */
+.callout {
+  background: var(--panel-raised);
+  border-left: 3px solid var(--sky);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  color: var(--parchment);
+  line-height: 1.55;
+}
